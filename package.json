@@ -1,12 +1,12 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "TexasRoadhouseSlideshow",
+  "version": "0.0.1",
+  "description": "A Texas Roadhouse slideshow",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "",
   "keywords": [
     "Electron",
     "quick",
@@ -14,9 +14,20 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": "Ross",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^7.0.1"
+    "electron": "^7.0.1",
+    "express": "^4.17.1",
+    "webpack": "^4.41.2",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-target-electron-renderer": "^0.4.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bower": "^1.8.8",
+    "firebase": "^7.2.3",
+    "jquery": "^3.4.1"
   }
 }

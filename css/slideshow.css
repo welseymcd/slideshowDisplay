@@ -1,0 +1,68 @@
+.header {
+    text-align: center;
+}
+#barContainer {
+    margin-right: auto;
+    margin-left: auto;
+    width: 75%;
+    height: 100vh;
+    background-color: white;
+}
+#images {
+    height: 100vh;
+    min-width: 100vw;
+}
+#containSlideshow {
+    height: 100vh;
+    width: 100vw;
+}
+.background {
+    height: 100%;
+    width: 100%;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/photowebapp-8e07e.appspot.com/o/WebsiteImages%2FfBCWJa.jpg?alt=media&token=10297137-a2c7-4ed4-89e3-71229ed17870");
+    background-size: 100%;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 1;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+.imageVisible {
+    display: block;
+    height: 100%;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.imageNotVisible {
+    display: none;
+}
+.empty {
+    background-color: white;
+    border-width: 1px;
+    border-color: white;
+
+}
+.seat {
+    border-style: solid;
+    border-width: 1px;
+    width: 10vh;
+    height: 10vh;
+    background-color: #A9A9A9;
+}
+.clean {
+    background-color: green;
+}
+.topLeft {
+    border-top-left-radius: 50px;
+
+}
+
+.topRight {
+    border-top-right-radius: 50px;
+
+}
