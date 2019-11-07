@@ -13,9 +13,15 @@
     const Firebase = firebase.initializeApp(firebaseConfig);
     const database = Firebase.database();
     var barSeats;
+    // Settings variables
+    var settings = {
+        secondsPerSlide: 5000,
+        showBarSeats: true,
+        slidesUntilBar: 3,
+    };
     const imagesRef = database.ref().child("114").child("slideshowImages");
     const barLayoutRef = database.ref().child("114").child("barLayout");
-
+    const settingsRef = database.ref().child("114").child("settings");
     var currentIndex = 0;
     var slidesSinceBar = 0;
     const barMessage = "<div class=\"header\"><h2 class=\"display-4\">Available Seating At the Bar</h2><br /><h3><small class=\"text-muted\">*Bar seating is first come, first serve*</small></h3></div>";
@@ -52,6 +58,47 @@
         console.log(tempBarLayout);
         $('#barContainer').html(tempBarLayout);
     }
+    barTimer = () =>{
+        if(slidesSinceBar === 0 && settings.showBarSeats){
+            $("#images").css("display", "block");
+            $("#barContainer").css("display", "none");
+        }
+        if(slidesSinceBar === settings.slidesUntilBar && settings.showBarSeats){
+            slidesSinceBar = 0;
+            $("#images").css("display", "none");
+            $("#barContainer").css("display", "block");
+        } else {
+            if(settings.showBarSeats){
+                slidesSinceBar += 1;
+            }
+            currentIndex += 1;
+        }
+        if(currentIndex > $('#images img').length){
+            currentIndex = 0;
+        }
+        cycleItems();
+    }
+    var autoSlide = setInterval(function(){
+        barTimer();
+    }, settings.secondsPerSlide)
+    console.log(settings.secondsPerSlide)
+    settingsRef.on("value", (snap)=>{
+        if(snap.val()){
+            var tempSettings = snap.val()
+            console.log("Resetting");
+
+            if(settings.secondsPerSlide !== tempSettings.secondsPerSlide){
+                clearInterval(autoSlide);
+                settings = tempSettings;
+                autoSlide = setInterval(function(){
+                    barTimer();
+                }, (tempSettings.secondsPerSlide))
+
+            } else {
+                settings = tempSettings;
+            }
+        }
+    });
     barLayoutRef.on("value", (snap)=>{
         if(snap.val()){
             barSeats = snap.val();
@@ -86,21 +133,3 @@
         item.addClass("imageVisible")
     }
 
-    var autoSlide = setInterval(function(){
-        if(slidesSinceBar === 0){
-            $("#images").css("display", "block");
-            $("#barContainer").css("display", "none");
-        }
-        if(slidesSinceBar === 3){
-            slidesSinceBar = 0;
-            $("#images").css("display", "none");
-            $("#barContainer").css("display", "block");
-        } else {
-            slidesSinceBar += 1;
-            currentIndex += 1;
-        }
-        if(currentIndex > $('#images img').length){
-            currentIndex = 0;
-        }
-        cycleItems();
-    }, 3000)

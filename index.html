@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="./css/slideshow.css" />
   </head>
   <body>
@@ -33,8 +33,10 @@
   <!-- Add Firebase products that you want to use -->
   <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
-  <script src="./bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script>let $ = require('jquery');</script>
+  <script>require('popper.js');</script>
+  <script>require('bootstrap');</script>
   <script src="./js/slideshow.js">
   </script>
   </body>
