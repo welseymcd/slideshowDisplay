@@ -77,8 +77,9 @@
             currentIndex = 0;
         }
         cycleItems();
+        setTimeout(barTimer, settings.secondsPerSlide);
     }
-    var autoSlide = setInterval(barTimer(), settings.secondsPerSlide)
+    //var autoSlide = setInterval(barTimer(), settings.secondsPerSlide)
     console.log(settings.secondsPerSlide)
     settingsRef.on("value", (snap)=>{
         if(snap.val()){
@@ -86,11 +87,7 @@
             console.log("Resetting");
 
             if(settings.secondsPerSlide !== tempSettings.secondsPerSlide){
-                clearInterval(autoSlide);
                 settings = tempSettings;
-                autoSlide = setInterval(function(){
-                    barTimer();
-                }, (tempSettings.secondsPerSlide))
 
             } else {
                 settings = tempSettings;
