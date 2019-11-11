@@ -78,9 +78,7 @@
         }
         cycleItems();
     }
-    var autoSlide = setInterval(function(){
-        barTimer();
-    }, settings.secondsPerSlide)
+    var autoSlide = setInterval(barTimer(), settings.secondsPerSlide)
     console.log(settings.secondsPerSlide)
     settingsRef.on("value", (snap)=>{
         if(snap.val()){
