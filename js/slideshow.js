@@ -80,6 +80,7 @@
         setTimeout(barTimer, settings.secondsPerSlide);
     }
     //var autoSlide = setInterval(barTimer(), settings.secondsPerSlide)
+    barTimer();
     console.log(settings.secondsPerSlide)
     settingsRef.on("value", (snap)=>{
         if(snap.val()){
