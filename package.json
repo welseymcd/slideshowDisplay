@@ -17,7 +17,7 @@
   "author": "Ross",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^7.0.1",
+    "electron": "^11.5.0",
     "express": "^4.17.1",
     "webpack": "^4.41.2",
     "webpack-dev-middleware": "^3.7.2",
